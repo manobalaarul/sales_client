@@ -123,7 +123,7 @@ const Profile = () => {
         <div className="p-4">
           <form
             action=""
-            className="grid grid-cols-2 gap-8"
+            className="lg:grid flex flex-col grid-cols-2 gap-4 lg:gap-8"
             onSubmit={handleSubmit}
           >
             <div className="grid gap-2">

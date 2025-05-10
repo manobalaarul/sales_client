@@ -323,15 +323,19 @@ const Sales = () => {
         <div className="border-b flex justify-between gap-3 items-center p-2">
           <div className="flex gap-3">
             <MdStore size={18} />
-            <h2 className="font-semibold text-md">Add Product List</h2>
+            <h2 className="font-semibold lg:text-md text-xs">
+              Add Product List
+            </h2>
           </div>
           <div>
-            <h2 className="font-semibold text-md">Invoice No : {invoiceNo}</h2>
+            <h2 className="font-semibold lg:text-md text-xs">
+              Invoice No : {invoiceNo}
+            </h2>
           </div>
         </div>
         <div className="p-4">
           <form action="" className="">
-            <div className="lg:grid  grid-cols-4 gap-4">
+            <div className="lg:grid flex flex-col  grid-cols-4 gap-4">
               <div className="grid gap-2">
                 <label htmlFor="name">Bar Code</label>
                 <input
@@ -418,7 +422,7 @@ const Sales = () => {
             </div>
             <div className="mt-4">
               <h3 className="font-semibold text-md mb-2">Product List</h3>
-              <table className="w-full border border-gray-300 mt-2 text-left bg-white">
+              <table className="w-full block overflow-scroll border border-gray-300 mt-2 text-left bg-white">
                 <thead>
                   <tr className=" border-b">
                     <th className="p-3 border-r">S.No</th>
@@ -462,7 +466,7 @@ const Sales = () => {
                   ))}
                 </tbody>
               </table>
-              <div className="lg:grid  grid-cols-6 gap-4 mt-4">
+              <div className="lg:grid flex flex-col grid-cols-6 gap-4 mt-4">
                 <div className="grid gap-2 col-span-2">
                   <label htmlFor="customer_name">Customer Name</label>
                   <input

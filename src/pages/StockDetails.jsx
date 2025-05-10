@@ -179,7 +179,7 @@ const StockDetails = () => {
           </div>
         </div>
         {/* Table */}
-        <table className="w-full border border-gray-300 mt-2 text-left bg-white">
+        <table className="w-full block overflow-scroll border border-gray-300 mt-2 text-left bg-white">
           <thead>
             <tr className=" border-b">
               <th className="p-3 border-r">S.No</th>
