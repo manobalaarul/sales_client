@@ -9,6 +9,7 @@ import AxiosToastError from "../components/utils/AxiosToastError";
 import Axios from "../components/utils/Axios";
 import SummaryApi from "../common/SummaryApi";
 import TextDate from "../components/utils/TextDate";
+import MetaTags from "../components/utils/MetaTags";
 
 const InStockDetails = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -126,6 +127,7 @@ const InStockDetails = () => {
 
   return (
     <div className="p-5">
+      <MetaTags title={"In Stock Details | Stock Management"} />
       <div className="flex items-center justify-between">
         <div>
           <h2 className="font-semibold text-lg">InStock Details</h2>

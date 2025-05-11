@@ -11,6 +11,7 @@ import {
 import SummaryApi from "../common/SummaryApi";
 import AxiosToastError from "../components/utils/AxiosToastError";
 import Axios from "../components/utils/Axios";
+import MetaTags from "../components/utils/MetaTags";
 
 const Home = () => {
   // Define ApexCharts data
@@ -79,6 +80,7 @@ const Home = () => {
 
   return (
     <div className="flex h-screen bg-gray-100">
+      <MetaTags title={"Home | Stock Management"} />
       <div className="flex-1 p-6">
         {/* Top Stats */}
         <h2 className="text-xl font-bold mb-4">Today's Report</h2>

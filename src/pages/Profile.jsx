@@ -106,7 +106,7 @@ const Profile = () => {
 
   return (
     <div className="p-5">
-      <MetaTags title={"Add Product | Stock Management"} />
+      <MetaTags title={"Profile Details | Stock Management"} />
       <div className="flex items-center justify-between">
         <div>
           <h2 className="font-semibold text-lg">Profile Details</h2>

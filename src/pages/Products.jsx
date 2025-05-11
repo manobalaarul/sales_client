@@ -13,6 +13,7 @@ import Barcode from "react-barcode";
 import { AiOutlineEye } from "react-icons/ai"; // Eye icon
 import toast from "react-hot-toast";
 import ConfirmBox from "../components/design/ConfirmBox";
+import MetaTags from "../components/utils/MetaTags";
 
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -115,6 +116,7 @@ const Products = () => {
 
   return (
     <div className="p-5">
+      <MetaTags title={"Products | Stock Management"} />
       <div className="flex items-center justify-between">
         <div>
           <h2 className="font-semibold text-lg">Products</h2>

@@ -13,6 +13,7 @@ import Barcode from "react-barcode";
 import { AiOutlineEye } from "react-icons/ai"; // Eye icon
 import toast from "react-hot-toast";
 import AddStock from "../components/product/AddStock";
+import MetaTags from "../components/utils/MetaTags";
 
 const StockDetails = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -114,6 +115,7 @@ const StockDetails = () => {
 
   return (
     <div className="p-5">
+      <MetaTags title={"Stock Details | Stock Management"} />
       <div className="flex items-center justify-between">
         <div>
           <h2 className="font-semibold text-lg">Stock Details</h2>

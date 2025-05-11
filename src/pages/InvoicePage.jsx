@@ -8,6 +8,7 @@ import Axios from "../components/utils/Axios";
 import SummaryApi from "../common/SummaryApi";
 import PathToUrl from "../components/utils/PathToUrl";
 import html2canvas from "html2canvas";
+import MetaTags from "../components/utils/MetaTags";
 
 const InvoicePage = () => {
   const profileDetails = useSelector((state) => state.profile);
@@ -76,6 +77,7 @@ const InvoicePage = () => {
 
   return (
     <div className="p-5">
+      <MetaTags title={"Invoice | Stock Management"} />
       <div className="bg-white shadow-md" id="printThis">
         <div className="flex justify-between items-center mb-4 bg-primary-blue px-4">
           <img
