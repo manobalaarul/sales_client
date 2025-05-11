@@ -422,7 +422,7 @@ const Sales = () => {
             </div>
             <div className="mt-4">
               <h3 className="font-semibold text-md mb-2">Product List</h3>
-              <table className="w-full block overflow-scroll border border-gray-300 mt-2 text-left bg-white">
+              <table className="w-full border border-gray-300 mt-2 text-left bg-white">
                 <thead>
                   <tr className=" border-b">
                     <th className="p-3 border-r">S.No</th>

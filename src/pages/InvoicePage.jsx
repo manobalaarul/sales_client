@@ -135,7 +135,7 @@ const InvoicePage = () => {
           </div>
 
           {/* Products Table */}
-          <div className="mb-16">
+          <div className="mb-8">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-primary-blue text-white">
