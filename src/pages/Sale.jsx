@@ -299,7 +299,6 @@ const Sales = () => {
       AxiosToastError(error);
     }
   };
-  
 
   return (
     <div className="p-5">
@@ -356,6 +355,7 @@ const Sales = () => {
                   name="productName"
                   className="bg-transparent p-2 border border-primary-blue rounded focus:outline-none w-full"
                   value={productData.productName}
+                  autoComplete="off"
                   onChange={(e) => {
                     setProductData({
                       ...productData,
@@ -375,6 +375,7 @@ const Sales = () => {
                       e.preventDefault();
                       setSelectedIndex((prev) => (prev > 0 ? prev - 1 : 0));
                     } else if (e.key === "Enter") {
+                      e.preventDefault();
                       if (selectedIndex >= 0) {
                         const selectedItem = searchResults[selectedIndex];
                         selectItem(selectedItem);
