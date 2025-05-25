@@ -13,7 +13,8 @@ import MetaTags from "../components/utils/MetaTags";
 
 const OrderDetails = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const page = Number(searchParams.get("page")) || 1;
+  const page = parseInt(searchParams.get("page")) || 1;
+  console.log(page);
   const limit = 10;
   const [data, setData] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -206,7 +207,7 @@ const OrderDetails = () => {
       <div className="p-2 bg-white rounded">
         <div className="lg:flex grid gap-4 lg:justify-between py-3">
           <div>
-            {/* <input
+            <input
               type="text"
               name="search"
               onChange={(e) => {
@@ -217,7 +218,7 @@ const OrderDetails = () => {
               value={searchWord}
               placeholder="Search Products"
               className="bg-transparent p-1 border border-primary-blue rounded focus:outline-none w-full"
-            /> */}
+            />
           </div>
           <div className="flex justify-between lg:justify-end">
             <button
@@ -275,7 +276,10 @@ const OrderDetails = () => {
                 <td className="p-3 border-r">
                   {row.productList.map((product, index) => {
                     return (
-                      <p className="bg-gray-300 rounded  my-2 p-2 text-xs">
+                      <p
+                        className="bg-gray-300 rounded  my-2 p-2 text-xs"
+                        key={index + "item"}
+                      >
                         {product.productName} - {product.quantity + " Items"}
                       </p>
                     );

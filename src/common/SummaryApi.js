@@ -135,7 +135,7 @@ const SummaryApi = {
   },
   get_order: {
     url: "/api/order/get_order",
-    method: "get",
+    method: "post",
   },
   get_order_detail: {
     url: "/api/order/get_order_detail",
