@@ -48,33 +48,47 @@ const InvoicePage = () => {
 
   // ... (other imports remain same)
 
-  // const downloadPDF = async () => {
-  //   try {
-  //     const element = document.getElementById("printThis");
-  //     const canvas = await html2canvas(element, {
-  //       scale: 1.5, // Higher quality
-  //       logging: false,
-  //       useCORS: true, // For images
-  //     });
+  const downloadPDF = async () => {
+    try {
+      const element = document.getElementById("printThis");
+      const canvas = await html2canvas(element, {
+        scale: 1.5, // Higher quality
+        logging: false,
+        useCORS: true, // For images
+      });
 
-  //     const imgData = canvas.toDataURL("image/jpeg", 1.0);
-  //     const pdf = new jsPDF({
-  //       orientation: "portrait",
-  //       unit: "mm",
-  //     });
+      const imgData = canvas.toDataURL("image/jpeg", 1.0);
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+      });
 
-  //     const imgProps = pdf.getImageProperties(imgData);
-  //     const pdfWidth = pdf.internal.pageSize.getWidth();
-  //     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-  //     pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-  //     pdf.save(`Invoice-${currentOrder.invoiceNo || "Unknown"}.pdf`);
-  //   } catch (error) {
-  //     console.error("Error generating PDF:", error);
-  //     AxiosToastError({ message: "Failed to generate PDF" });
-  //   }
-  // };
+      pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`Invoice-${currentOrder.invoiceNo || "Unknown"}.pdf`);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      AxiosToastError({ message: "Failed to generate PDF" });
+    }
+  };
+  const WordSplitter = ({ text = "" }) => {
+    const safeText = text || ""; // fallback if text is undefined
+    const words = safeText.trim().split(/\s+/); // split by spaces
+    const firstLine = words.slice(0, 5).join(" ");
+    const secondLine = words.slice(5, 10).join(" ");
+    const remainingLine = words.slice(10).join(" ");
 
+    return (
+      <div>
+        {firstLine && <p className="text-gray-600">{firstLine}</p>}
+        {secondLine && <p className="text-gray-600">{secondLine}</p>}
+        {remainingLine && <p className="text-gray-600">{remainingLine}</p>}
+      </div>
+    );
+  };
   return (
     <div className="p-5">
       <MetaTags title={"Invoice | Stock Management"} />
@@ -103,12 +117,12 @@ const InvoicePage = () => {
                   : ""}
               </p>
               <p
-                className={`px-2 py-1 rounded inline-block mt-2 ${
+                className={`px-2 py-2 rounded inline-block mt-2 uppercase ${
                   currentOrder.status === "confirmed"
-                    ? "bg-green-200 text-green-800"
+                    ? "text-green-800"
                     : currentOrder.status === "Pending"
-                    ? "bg-yellow-200 text-yellow-800"
-                    : "bg-red-200 text-red-800"
+                    ? "text-yellow-800"
+                    : "text-red-800"
                 }`}
               >
                 {currentOrder.status}
@@ -128,8 +142,7 @@ const InvoicePage = () => {
             <div>
               <h2 className="text-lg font-semibold mb-2">Bill To</h2>
               <p className="font-medium">{currentOrder.customer_name}</p>
-              <p className="text-gray-600">{currentOrder.customer_address}</p>
-              <p className="text-gray-600">Tamilnadu, India</p>
+              <WordSplitter text={currentOrder.customer_address} />
               <p className="text-gray-600">{currentOrder.customer_phone}</p>
             </div>
           </div>
@@ -199,23 +212,22 @@ const InvoicePage = () => {
             <p className="text-xs text-gray-400 mb-6">
               Terms & Conditions: Payment due within 15 days
             </p>
-
-            <div className="flex justify-end space-x-4 print:hidden">
-              {/* <button
-                onClick={downloadPDF}
-                className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 transition-colors"
-              >
-                Download PDF
-              </button> */}
-              <button
-                onClick={printInvoice}
-                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
-              >
-                Print Invoice
-              </button>
-            </div>
           </div>
         </div>
+      </div>
+      <div className="flex justify-end space-x-4 print:hidden mt-4">
+        <button
+          onClick={downloadPDF}
+          className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 transition-colors"
+        >
+          Download PDF
+        </button>
+        <button
+          onClick={printInvoice}
+          className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+        >
+          Print Invoice
+        </button>
       </div>
     </div>
   );
